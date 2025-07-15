@@ -1,0 +1,22 @@
+import sys
+from collections import deque
+input = sys.stdin.readline
+
+a, b  = map(int, input().split())
+cnt = 0
+
+def bfs(a):
+    q = deque()
+    q.append((a,1))
+    while(q):
+        n,t = q.popleft()
+        if n>b:
+            continue
+        if n==b:
+            print(t)
+            break
+        q.append((int(str(n)+"1"),t+1))
+        q.append((n*2,t+1))
+    else:
+        print(-1)
+bfs(a)
